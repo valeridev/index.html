@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <title>Let's Party</title>
+        <style>
+            body {
+                padding: 20px;
+                background: linear-gradient(90.7deg, rgb(255, 253, 218) 1.9%, rgb(246, 210, 255) 39.3%, rgb(152, 222, 254) 64.7%, rgb(251, 255, 210) 100.8%);
+                text-align: center;
+            }
+
+            h2 {
+                color: #d8800c;
+                font-size: 32px;
+            }
+
+            .age {
+                color: #ee54c0;
+                background-color: rgba(255, 255, 255, 0.2);
+                display: inline-block;
+                padding: 10px;
+                border-radius: 4px;
+                text-align: center;
+                margin: 0 auto;
+                font-size: 46px;
+            }
+
+            .date {
+                color: #d8800c;
+                background-color: rgba(255, 255, 255, 0.2);
+                display: inline-block;
+                font-size: 32px;
+                padding: 10px;
+                border-radius: 4px;
+            }
+
+            p {
+                color: #ee54c0;
+                font-size: 32px;
+            }
+
+            #countdown {
+                font-size: 32px;
+                color: #d8800c;
+            }
+
+            @media only screen and (max-width: 480px) {
+                .age {
+                    font-size: 32px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <h2>JOIN US</h2>
+        <h2>TO CELEBRATE</h2>
+        <div class="age">
+            <h1>MY</h1>
+            <h1>10th BIRTHDAY</h1>
+        </div>
+        <br />
+        <br />
+        <div class="date"> <strong>December 29th, 2023 at 3pm</strong>
+        </div>
+        <p>RSVP 📱<a href="sms:+123456789">32107893465</a></p>
+        <div id="countdown"></div>
+        <script>
+
+            const targetDate = new Date('December 29, 2023 15:00:00').getTime();
+
+
+            const countdownElement = document.getElementById('countdown');
+
+            const updateCountdown = () => {
+                const now = new Date().getTime();
+                const timeRemaining = targetDate - now;
+
+
+                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+
+                countdownElement.innerHTML = `Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+
+                if (timeRemaining < 0) {
+                    countdownElement.innerHTML = 'The party has started!';
+                }
+            };
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        </script>
+
+
+    </body>
+
+</html>
